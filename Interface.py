@@ -35,18 +35,26 @@ MONTHS_EN_TO_FR = {
 
 # Funny comments pool
 FUNNY_COMMENTS = [
-    "Une année de plus, une ride de sagesse en plus ! 🎂",
     "Attention, la fête approche, prépare les bougies ! 🕯️",
     "Joyeux anniversaire en avance, on espère que le gâteau sera énorme ! 🎉",
     "L’équipe te souhaite une journée mémorable ! 🎁",
     "C’est l’heure de souffler les bougies et de faire un vœu ! 🕯️🎈",
-    "L’âge, ce n’est qu’un nombre… sauf quand on parle des anniversaires ! 😜",
-    "En vieillissant, on devient plus sage… mais est-ce vraiment le cas ? 🤔🎉",
     "Que ta journée soit aussi brillante que toi ! 🌟🎉",
-    "Joyeux anniversaire à l’esprit jeune et au cœur grand ! ❤️🎂"
     "Prêt(e) pour la fête ? 🎉",
-    "Que les ballons volent dans les airs ! 🎈"
+    "Que les ballons volent dans les airs ! 🎈",
+    "Un an de plus, et toujours aussi fabuleux(se) ! 🎉✨",
+    "Joyeux anniversaire ! On espère que cette année sera pleine de surprises (les bonnes, bien sûr !) 🎂🎁",
+    "Le temps passe, mais toi, tu restes indémodable ! Bon anniversaire ! 🕰️🎉",
+    "Un jour de fête, une tonne de gâteaux, et encore plus de bonheur ! 🎂❤️",
+    "Tu sais que tu vieillis quand les bougies coûtent plus cher que le gâteau… mais on t’aime quand même ! 🎂🔥",
+    "Pas de panique, l'âge c'est comme le vin : tu ne fais que te bonifier ! 🍷🎉",
+    "Joyeux anniversaire ! N’oublie pas, on ne compte pas les années mais les souvenirs ! 🕰️✨",
+    "Fête bien, ris beaucoup, et surtout, mange tout le gâteau ! 🎂🎈",
+    "Tu ne vieillis pas, tu montes juste en niveau ! 🎮🆙",
+    "Rappelle-toi : plus de bougies = plus de vœux à faire. Alors, souffle bien fort ! 🕯️🎂",
+    "Aujourd’hui, c’est ton jour ! Que le monde tourne autour de toi (au moins jusqu’à minuit) ! 🌟🎁",
 ]
+
 
 def format_date_in_french(formatted_date):
     for en, fr in MONTHS_EN_TO_FR.items():
