@@ -8,7 +8,7 @@ import random
 # locale.setlocale(locale.LC_TIME, 'french')  # Adjust if needed for your system
 
 # Path to your Excel file
-EXCEL_FILE_PATH = r"c:\Users\PaulRENOUX\OneDrive - RSM France\Documents\Annivs\Annivs.xlsx"
+EXCEL_FILE_PATH = "Annivs.xlsx"
 
 MONTHS_EN_TO_FR = {
     "January": "Janvier",
