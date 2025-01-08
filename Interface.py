@@ -83,7 +83,10 @@ def find_next_birthday(data):
     data = data.sort_values(by='Next Birthday')
     next_birthday = data.iloc[0]
     return next_birthday
-
+st.set_page_config(
+    page_title="Anniversaires L&D",  # This sets the name of the app
+    page_icon="🎉"                 # Optional: Set a custom icon for the app                # Optional: Set the layout to "centered" or "wide"
+)
 # Streamlit interface
 st.title("🎉 Anniversaire L&D 🎂")
 # Custom CSS for birthday theme
