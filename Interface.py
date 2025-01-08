@@ -8,7 +8,7 @@ import random
 # locale.setlocale(locale.LC_TIME, 'french')  # Adjust if needed for your system
 
 # Path to your Excel file
-EXCEL_FILE_PATH = "Annivs.xlsx"
+EXCEL_FILE_PATH = r"c:\Users\PaulRENOUX\OneDrive - RSM France\Documents\Annivs\Annivs.xlsx"
 
 MONTHS_EN_TO_FR = {
     "January": "Janvier",
@@ -131,7 +131,7 @@ if data is not None:
             funny_comment = random.choice(FUNNY_COMMENTS)
             
             # Format the date in French
-            next_birthday_date = format_date_in_french(next_birthday['Next Birthday'].strftime('%A %d %B %Y'))
+            next_birthday_date = format_date_in_french(next_birthday['Next Birthday'].strftime('%A %d %B'))
             
             # Display the joyful birthday information
             st.markdown(f"<div class='birthday-box'>", unsafe_allow_html=True)
@@ -158,8 +158,9 @@ if data is not None:
             # Now, display the number of other birthdays (excluding the next birthday)
             num_birthdays_excluding_next = len(birthdays_this_month_excluding_next)
             st.markdown("<br>" * 4, unsafe_allow_html=True)  # Adds 5 line breaks (adjust as needed)
-            st.markdown(f"<div style='text-align: center;'>🎂 Il y a {num_birthdays_excluding_next} autres anniversaires ce mois-ci !</div>", unsafe_allow_html=True)
+            
             if num_birthdays_excluding_next > 0:
+                st.markdown(f"<div style='text-align: center;'>🎂 Il y a {num_birthdays_excluding_next} autres anniversaires ce mois-ci !</div>", unsafe_allow_html=True)
            # Display the button to toggle the list of other birthdays
                 if 'show_birthdays' not in st.session_state:
                     st.session_state.show_birthdays = False  # Default to not show birthdays list
@@ -174,11 +175,13 @@ if data is not None:
                     for index, row in birthdays_this_month_excluding_next.iterrows():
                         birthday_date = row['DATE NAISSANCE'].replace(year=datetime.today().year)
                         st.markdown(f"🎉 **{row['PRENOM']}** : {format_date_in_french(birthday_date.strftime('%d %B'))}", unsafe_allow_html=True)
+            else: 
+                st.markdown(f"<div style='text-align: center;'>🎂 Il n'y a pas d'autre anniversaire ce mois-ci !</div>", unsafe_allow_html=True)
             # Now, find the next birthday after the one currently displayed
             next_birthday_after_next = data[data['Next Birthday'] > next_birthday['Next Birthday']].sort_values(by='Next Birthday').iloc[0]
             st.markdown("<br>" * 3, unsafe_allow_html=True)  # Adds 5 line breaks (adjust as needed)
             # Display the message for the birthday after the next one
-            next_birthday_after_next_date = format_date_in_french(next_birthday_after_next['Next Birthday'].strftime('%A %d %B %Y'))
+            next_birthday_after_next_date = format_date_in_french(next_birthday_after_next['Next Birthday'].strftime('%A %d %B'))
             st.markdown(
                 f"<div style='font-size: 18px; text-align: center;'>🎂 Mais {next_birthday_after_next['PRENOM']} arrive juste derrière (le {next_birthday_after_next_date}) ! 🎉</div>", 
                 unsafe_allow_html=True
