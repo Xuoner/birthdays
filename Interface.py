@@ -176,7 +176,7 @@ if data is not None:
                         birthday_date = row['DATE NAISSANCE'].replace(year=datetime.today().year)
                         st.markdown(f"🎉 **{row['PRENOM']}** : {format_date_in_french(birthday_date.strftime('%d %B'))}", unsafe_allow_html=True)
             else: 
-                st.markdown(f"<div style='text-align: center;'>🎂 Il n'y a pas d'autre anniversaire ce mois-ci !</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='text-align: center;'>🎂 Il n'y a pas d'autres anniversaires ce mois-ci !</div>", unsafe_allow_html=True)
             # Now, find the next birthday after the one currently displayed
             next_birthday_after_next = data[data['Next Birthday'] > next_birthday['Next Birthday']].sort_values(by='Next Birthday').iloc[0]
             st.markdown("<br>" * 3, unsafe_allow_html=True)  # Adds 5 line breaks (adjust as needed)
