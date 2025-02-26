@@ -276,7 +276,7 @@ if page == "Boite à idées":
     if df.empty:
         st.info("Aucune idée n'a encore été soumise.")
     else:
-        df.set_index('Suggestions', inplace=True)
+        # df.set_index('Suggestions', inplace=True)
         st.table(df)   
 
 # Page: Petits-Déjeuners
