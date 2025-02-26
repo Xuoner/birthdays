@@ -80,11 +80,11 @@ def save_idea(idea):
         sha = get_response.json()["sha"]
     else:
         sha = None  # Si le fichier n'existe pas encore
-
+    csv_base64 = base64.b64encode(csv_content.encode("utf-8")).decode("utf-8")
     # Mise à jour sur GitHub
     data = {
         "message": "Mise à jour des idées",
-        "content": csv_content.encode("utf-8").decode("latin1").encode("base64").decode(),
+        "content": csv_base64,
         "sha": sha,
         "branch": "main"
     }
