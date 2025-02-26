@@ -66,13 +66,13 @@ FUNNY_COMMENTS = [
 ]
 
 def load_ideas():
-    return pd.read_csv(CSV_FILE, sep = "\t")
+    return pd.read_csv(CSV_FILE)
 
 def save_idea(idea):
     df = load_ideas()
-    new_entry = pd.DataFrame([[idea]], columns=["Idée"])
+    new_entry = pd.DataFrame([[idea]], columns=["Suggestions"])
     df = pd.concat([df, new_entry], ignore_index=True)
-    csv_content = df.to_csv(index=False, sep="\t")
+    csv_content = df.to_csv(index=False)
     # Récupérer le SHA du fichier (nécessaire pour l'update)
     headers = {"Authorization": f"token {GITHUB_TOKEN}"}
     get_response = requests.get(API_URL, headers=headers)
