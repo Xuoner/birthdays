@@ -66,7 +66,7 @@ FUNNY_COMMENTS = [
 ]
 
 def load_ideas():
-    return pd.read_csv(CSV_FILE)
+    return pd.read_csv(CSV_FILE, sep = "\t")
 
 def save_idea(idea):
     df = load_ideas()
