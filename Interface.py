@@ -4,14 +4,20 @@ from datetime import datetime, timedelta
 import locale
 import random
 import time
+import requests
+import os
+from io import StringIO
 
 # Set locale to French for date formatting
 # locale.setlocale(locale.LC_TIME, 'french')  # Adjust if needed for your system
 
 # Path to your Excel file
 EXCEL_FILE_PATH = "Annivs.xlsx"
+GITHUB_TOKEN = st.secrets["GITHUB_TOKEN"]
 
 CSV_FILE = "boite_a_idees.csv"
+RAW_URL = f"https://raw.githubusercontent.com/Xuoner/birthdays/main/boite_a_idees.csv"
+API_URL = f"https://api.github.com/repos/Xuoner/birthdays/contents/boite_a_idees.csv"
 
 MONTHS_EN_TO_FR = {
     "January": "Janvier",
@@ -65,7 +71,24 @@ def save_idea(idea):
     df = load_ideas()
     new_entry = pd.DataFrame([[idea]], columns=["Idée"])
     df = pd.concat([df, new_entry], ignore_index=True)
-    df.to_csv(CSV_FILE, index=False)
+    csv_content = df.to_csv(index=False)
+    # Récupérer le SHA du fichier (nécessaire pour l'update)
+    headers = {"Authorization": f"token {GITHUB_TOKEN}"}
+    get_response = requests.get(API_URL, headers=headers)
+    
+    if get_response.status_code == 200:
+        sha = get_response.json()["sha"]
+    else:
+        sha = None  # Si le fichier n'existe pas encore
+
+    # Mise à jour sur GitHub
+    data = {
+        "message": "Mise à jour des idées",
+        "content": csv_content.encode("utf-8").decode("latin1").encode("base64").decode(),
+        "sha": sha,
+        "branch": "main"
+    }
+    requests.put(API_URL, headers=headers, json=data)
 
 def format_date_in_french(formatted_date):
     for en, fr in MONTHS_EN_TO_FR.items():
