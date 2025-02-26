@@ -266,9 +266,9 @@ if page == "Boite à idées":
                 st.success("Votre idée a été ajoutée avec succès !")
                 st.session_state.submitted = True  # Set the state to track submission
                 st.rerun()
-else:
-    # Display the message if the idea was submitted
-    st.write("Idée soumise, elle apparaîtra bientôt.")
+    else:
+        # Display the message if the idea was submitted
+        st.write("Idée soumise, elle apparaîtra bientôt.")
 
     # Affichage des idées enregistrées sous forme de tableau
     st.subheader("📜 Idées précédentes")
@@ -276,7 +276,7 @@ else:
     if df.empty:
         st.info("Aucune idée n'a encore été soumise.")
     else:
-        # df.set_index('Suggestions', inplace=True)
+        df.set_index('Suggestions', inplace=True)
         st.table(df)   
 
 # Page: Petits-Déjeuners
