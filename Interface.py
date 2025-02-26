@@ -137,7 +137,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"               # Optional: Set a custom icon for the app                # Optional: Set the layout to "centered" or "wide"
 )
 st.sidebar.title("Pages disponibles")
-page = st.sidebar.radio("Naviguer vers:", ["Anniversaires", "Boite à idées", "Petit-déjeuner", "Carte des Déjeuners", "Chatbot ACL"])
+page = st.sidebar.radio("Naviguer vers:", ["Boîte à idées 💡","Anniversaires 🎂", "Petit-déjeuner 🥐", "Carte des Déjeuners 🍽️", "Chatbot ACL 🤖"])
 
 
 # Page: Anniversaires
