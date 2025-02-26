@@ -252,7 +252,7 @@ if page == "Anniversaires 🎂":
             st.error("Le fichier doit contenir les colonnes `PRENOM` et `DATE NAISSANCE`.")
 
 # Page : Boite à Idées:
-if page == "Boite à idées 💡":
+if page == "Boîte à idées 💡":
 
     st.title("💡 Boîte à Idées")
 
