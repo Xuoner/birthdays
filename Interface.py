@@ -7,6 +7,7 @@ import time
 import requests
 import os
 from io import StringIO
+import base64
 
 # Set locale to French for date formatting
 # locale.setlocale(locale.LC_TIME, 'french')  # Adjust if needed for your system
