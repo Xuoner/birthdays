@@ -263,7 +263,7 @@ if page == "Boite à idées":
         if new_idea.strip():
             save_idea(new_idea.strip())
             st.success("Votre idée a été ajoutée avec succès !")
-            st.experimental_rerun()
+            st.rerun()
 
     # Affichage des idées enregistrées sous forme de tableau
     st.subheader("📜 Idées précédentes")
