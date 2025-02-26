@@ -89,7 +89,12 @@ def save_idea(idea):
         "sha": sha,
         "branch": "main"
     }
-    requests.put(API_URL, headers=headers, json=data)
+    put_response = requests.put(API_URL, headers=headers, json=data)
+        
+    if put_response.status_code == 200:
+        print("File updated successfully!")
+    else:
+        print(f"Error updating file: {put_response.status_code}, {put_response.text}")
 
 def format_date_in_french(formatted_date):
     for en, fr in MONTHS_EN_TO_FR.items():
