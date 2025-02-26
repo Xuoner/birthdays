@@ -271,7 +271,7 @@ if page == "Boite à idées":
     if df.empty:
         st.info("Aucune idée n'a encore été soumise.")
     else:
-        st.dataframe(df, use_container_width=True, hide_index=True)   
+        st.table(df, use_container_width=True, hide_index=True)   
 
 # Page: Petits-Déjeuners
 if page == "Petit-déjeuner":
