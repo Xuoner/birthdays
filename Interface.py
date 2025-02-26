@@ -141,7 +141,7 @@ page = st.sidebar.radio("Naviguer vers:", ["Boîte à idées 💡","Anniversaire
 
 
 # Page: Anniversaires
-if page == "Anniversaires":
+if page == "Anniversaires 🎂":
     # Streamlit interface
     st.title("🎉 Anniversaire L&D 🎂")
     # Custom CSS for birthday theme
@@ -252,7 +252,7 @@ if page == "Anniversaires":
             st.error("Le fichier doit contenir les colonnes `PRENOM` et `DATE NAISSANCE`.")
 
 # Page : Boite à Idées:
-if page == "Boite à idées":
+if page == "Boite à idées 💡":
 
     st.title("💡 Boîte à Idées")
 
@@ -280,7 +280,7 @@ if page == "Boite à idées":
         st.table(df)   
 
 # Page: Petits-Déjeuners
-if page == "Petit-déjeuner":
+if page == "Petit-déjeuner 🥐":
     EXCEL_FILE_PATH = "Petits_Dejs.xlsx"
 
     df = load_data(EXCEL_FILE_PATH)
@@ -352,7 +352,7 @@ if page == "Petit-déjeuner":
 
 
 # Page: Petits-Déjeuners
-if page == "Chatbot ACL":
+if page == "Chatbot ACL 🤖":
     st.title("🤖 Chatbot ACL")
 
     # Custom CSS for styling the chat
