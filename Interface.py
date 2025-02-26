@@ -11,6 +11,8 @@ import time
 # Path to your Excel file
 EXCEL_FILE_PATH = "Annivs.xlsx"
 
+CSV_FILE = "boite_a_idees.csv"
+
 MONTHS_EN_TO_FR = {
     "January": "Janvier",
     "February": "Février",
@@ -56,6 +58,14 @@ FUNNY_COMMENTS = [
     "Aujourd’hui, c’est ton jour ! Que le monde tourne autour de toi (au moins jusqu’à minuit) ! 🌟🎁",
 ]
 
+def load_ideas():
+    return pd.read_csv(CSV_FILE)
+
+def save_idea(idea):
+    df = load_ideas()
+    new_entry = pd.DataFrame([[idea]], columns=["Idée"])
+    df = pd.concat([df, new_entry], ignore_index=True)
+    df.to_csv(CSV_FILE, index=False)
 
 def format_date_in_french(formatted_date):
     for en, fr in MONTHS_EN_TO_FR.items():
@@ -98,7 +108,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"               # Optional: Set a custom icon for the app                # Optional: Set the layout to "centered" or "wide"
 )
 st.sidebar.title("Pages disponibles")
-page = st.sidebar.radio("Naviguer vers:", ["Anniversaires", "Petit-déjeuner", "Carte des Déjeuners", "Chatbot ACL"])
+page = st.sidebar.radio("Naviguer vers:", ["Anniversaires", "Boite à idées", "Petit-déjeuner", "Carte des Déjeuners", "Chatbot ACL"])
 
 
 # Page: Anniversaires
@@ -212,6 +222,27 @@ if page == "Anniversaires":
         else:
             st.error("Le fichier doit contenir les colonnes `PRENOM` et `DATE NAISSANCE`.")
 
+# Page : Boite à Idées:
+if page == "Boite à idées":
+
+    st.title("💡 Boîte à Idées")
+
+    # Saisie de l'idée par l'utilisateur
+    new_idea = st.text_area("Déposez votre idée ici :", "")
+
+    if st.button("Soumettre"):
+        if new_idea.strip():
+            save_idea(new_idea.strip())
+            st.success("Votre idée a été ajoutée avec succès !")
+            st.experimental_rerun()
+
+    # Affichage des idées enregistrées sous forme de tableau
+    st.subheader("📜 Idées précédentes")
+    df = load_ideas()
+    if df.empty:
+        st.info("Aucune idée n'a encore été soumise.")
+    else:
+        st.dataframe(df, use_container_width=True, hide_index=True)   
 
 # Page: Petits-Déjeuners
 if page == "Petit-déjeuner":
