@@ -70,7 +70,7 @@ def load_ideas():
 
 def save_idea(idea):
     df = load_ideas()
-    new_entry = pd.DataFrame([[idea, 0, 0]], columns=["Suggestions", "upvotes", "downvotes"])
+    new_entry = pd.DataFrame([[idea, 0, 0]], columns=["Suggestions", "Upvotes", "Downvotes"])
     df = pd.concat([df, new_entry], ignore_index=True)
     csv_content = df.to_csv(index=False)
     # Récupérer le SHA du fichier (nécessaire pour l'update)
