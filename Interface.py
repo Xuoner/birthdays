@@ -134,7 +134,7 @@ def find_next_birthday(data):
 st.set_page_config(
     page_title="Anniversaires L&D",  # This sets the name of the app
     page_icon="🎉",
-    initial_sidebar_state="collapsed"               # Optional: Set a custom icon for the app                # Optional: Set the layout to "centered" or "wide"
+    # initial_sidebar_state="collapsed"               # Optional: Set a custom icon for the app                # Optional: Set the layout to "centered" or "wide"
 )
 st.sidebar.title("Pages disponibles")
 page = st.sidebar.radio("Naviguer vers:", ["Boîte à idées 💡","Anniversaires 🎂", "Petit-déjeuner 🥐", "Carte des Déjeuners 🍽️", "Chatbot ACL 🤖"])
