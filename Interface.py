@@ -70,9 +70,9 @@ def load_ideas():
 
 def save_idea(idea):
     df = load_ideas()
-    new_entry = pd.DataFrame([[idea]], columns=["Suggestions"])
+    new_entry = pd.DataFrame([[idea, 0, 0]], columns=["Suggestions","Upvotes", "Downvotes"])
     df = pd.concat([df, new_entry], ignore_index=True)
-    csv_content = df.to_csv(index=False)
+    csv_content = df.to_csv(index=False, sep = "\t")
     # Récupérer le SHA du fichier (nécessaire pour l'update)
     headers = {"Authorization": f"token {GITHUB_TOKEN}"}
     get_response = requests.get(API_URL, headers=headers)
@@ -95,7 +95,13 @@ def save_idea(idea):
         print("File updated successfully!")
     else:
         print(f"Error updating file: {put_response.status_code}, {put_response.text}")
-
+def update_votes(index, vote_type):
+    df = load_ideas()
+    if vote_type == "up":
+        df.at[index, "Upvotes"] += 1
+    elif vote_type == "down":
+        df.at[index, "Downvotes"] += 1
+    df.to_csv(CSV_FILE, index=False, sep="\t")
 def format_date_in_french(formatted_date):
     for en, fr in MONTHS_EN_TO_FR.items():
         formatted_date = formatted_date.replace(en, fr)  # Replace with French
@@ -277,7 +283,45 @@ if page == "Boîte à idées 💡":
         st.info("Aucune idée n'a encore été soumise.")
     else:
         # df.set_index('Suggestions', inplace=True)
-        st.table(df)   
+        # st.table(df)   
+        # Initialize a session state list to keep track of which ideas have been voted on
+        if "voted_ideas" not in st.session_state:
+            st.session_state.voted_ideas = {}
+
+        # Loop through the ideas and add voting buttons below the table
+        for idx, row in df.iterrows():
+            idea = row['Suggestions']
+            upvotes = row['Upvotes']
+            downvotes = row['Downvotes']
+
+            # Check if the idea has already been voted on (using session state)
+            has_voted = st.session_state.voted_ideas.get(idx, False)
+
+            # Create a row with idea and buttons next to it
+            col1, col2, col3 = st.columns([5, 1, 1])
+
+            with col1:
+                st.write(f"**{idea}**")
+            with col2:
+                # Disable button if already voted
+                if has_voted:
+                    st.button(f"👍 {upvotes}", key=f"up_{idx}", disabled=True)
+                else:
+                    if st.button(f"👍 {upvotes}", key=f"up_{idx}"):
+                        update_votes(idx, "up")
+                        st.session_state.voted_ideas[idx] = True  # Mark as voted
+                        st.rerun()  # Re-run to update the votes
+            with col3:
+                # Disable button if already voted
+                if has_voted:
+                    st.button(f"👎 {downvotes}", key=f"down_{idx}", disabled=True)
+                else:
+                    if st.button(f"👎 {downvotes}", key=f"down_{idx}"):
+                        update_votes(idx, "down")
+                        st.session_state.voted_ideas[idx] = True  # Mark as voted
+                        st.rerun()  # Re-run to update the votes
+
+            st.markdown("---")  # Add a separator between ideas
 
 # Page: Petits-Déjeuners
 if page == "Petit-déjeuner 🥐":
