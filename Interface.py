@@ -279,7 +279,7 @@ if page == "Boîte à idées 💡":
     # Affichage des idées enregistrées sous forme de tableau
     st.subheader("📜 Idées précédentes")
     df = load_ideas()
-    print(df)
+    print(df.columns)
     if df.empty:
         st.info("Aucune idée n'a encore été soumise.")
     else:
