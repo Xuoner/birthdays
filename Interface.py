@@ -70,7 +70,7 @@ def load_ideas():
 
 def save_idea(idea):
     df = load_ideas()
-    new_entry = pd.DataFrame([[idea, 0, 0]], columns=["Suggestions", "Upvotes", "Downvotes"])
+    new_entry = pd.DataFrame([[idea]], columns=["Suggestions"])
     df = pd.concat([df, new_entry], ignore_index=True)
     csv_content = df.to_csv(index=False)
     # Récupérer le SHA du fichier (nécessaire pour l'update)
@@ -277,23 +277,7 @@ if page == "Boîte à idées 💡":
         st.info("Aucune idée n'a encore été soumise.")
     else:
         # df.set_index('Suggestions', inplace=True)
-        for index, row in df.iterrows():
-            col1, col2, col3 = st.columns([6, 1, 1])
-    
-            with col1:
-                st.write(f"**{row['Suggestions']}**")
-    
-            with col2:
-                if st.button(f"👍 {row['upvotes']}", key=f"up_{index}"):
-                    df.at[index, "upvotes"] += 1
-                    update_csv_on_github(df)
-                    st.rerun()
-    
-            with col3:
-                if st.button(f"👎 {row['downvotes']}", key=f"down_{index}"):
-                    df.at[index, "downvotes"] += 1
-                    update_csv_on_github(df)
-                    st.rerun()   
+        st.table(df)   
 
 # Page: Petits-Déjeuners
 if page == "Petit-déjeuner 🥐":
