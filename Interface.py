@@ -198,6 +198,7 @@ if page == "Anniversaires 🎂":
                 next_birthday_date = format_date_in_french(next_birthday['Next Birthday'].strftime('%A %d %B'))
                 same_birthday_people = data[data['Next Birthday'] == next_birthday['Next Birthday']]
                 num_people = len(same_birthday_people)
+                birthday_message = "🎉 "
                 # Display the joyful birthday information
                 st.markdown(f"<div class='birthday-box'>", unsafe_allow_html=True)
                 # Display a bigger line for the birthday message with neutral text color
