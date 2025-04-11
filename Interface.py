@@ -292,7 +292,7 @@ if page == "Boîte à idées 💡":
         st.write("Idée soumise, elle apparaîtra bientôt.")
 
     # Affichage des idées enregistrées sous forme de tableau
-    st.subheader("📜 Idées précédentes")
+    st.subheader("📜 Idées soumises")
     st.markdown("---")
     df = load_ideas()
     if df.empty:
@@ -341,7 +341,7 @@ if page == "Boîte à idées 💡":
     # Display the previously discussed ideas from `previous_ideas.csv`
     st.subheader("📝 Idées déjà discutées")
     st.markdown("---")
-    df_prev = pd.read_csv("previous_ideas.csv")
+    df_prev = pd.read_csv("previous_ideas.csv", sep = "\t")
     if df_prev.empty:
         st.info("Aucune idée n'a encore été déplacée vers les idées précédentes.")
     else:
