@@ -342,13 +342,7 @@ if page == "Boîte à idées 💡":
     st.subheader("📝 Idées déjà discutées")
     st.markdown("---")
     df_prev = pd.read_csv("previous_ideas.csv", sep = "\t")
-    if df_prev.empty:
-        st.info("Aucune idée n'a encore été déplacée vers les idées précédentes.")
-    else:
-        # Clean display for previous ideas (concise format)
-        # You can either use a table or cards, depending on your preference.
-        # Display the previous ideas in a table format
-        st.table(df_prev[['Idée', 'Solution']])  # Only showing "Suggestions" and "Resolution"
+    st.table(df_prev)  # Only showing "Suggestions" and "Resolution"
 # Page: Petits-Déjeuners
 if page == "Petit-déjeuner 🥐":
     EXCEL_FILE_PATH = "Petits_Dejs.xlsx"
