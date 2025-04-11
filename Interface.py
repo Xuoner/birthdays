@@ -210,7 +210,7 @@ if page == "Anniversaires 🎂":
                     birthday_message += " et ".join([person['PRENOM'] for index, person in same_birthday_people.iterrows()])
                     birthday_message += f" fêteront leur anniversaire le {next_birthday_date}. Oui oui, deux anniversaires en un jour, on en a de la chance !"
                 st.markdown(
-                    f"<h2 style='font-size: 36px;'>🎉 {next_birthday['PRENOM']} aura {next_birthday['Age']} ans le {next_birthday_date}.</h2>", 
+                    f"<h2 style='font-size: 36px;'>{birthday_message}</h2>", 
                     unsafe_allow_html=True
                 )
 
