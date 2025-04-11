@@ -341,8 +341,6 @@ if page == "Boîte à idées 💡":
     # Display the previously discussed ideas from `previous_ideas.csv`
     st.subheader("📝 Idées déjà discutées")
     st.markdown("---")
-
-    try:
         df_prev = pd.read_csv("previous_ideas.csv")
         if df_prev.empty:
             st.info("Aucune idée n'a encore été déplacée vers les idées précédentes.")
