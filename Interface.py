@@ -210,7 +210,7 @@ if page == "Anniversaires 🎂":
                     birthday_message += " et ".join([person['PRENOM'] for index, person in same_birthday_people.iterrows()])
                     birthday_message += f" fêteront leur anniversaire le {next_birthday_date}. Oui oui, deux anniversaires en un jour, on en a de la chance !"
                 st.markdown(
-                    f"<h2 style='font-size: 36px;'>{birthday_message}</h2>", 
+                    f"<h2 style='font-size: 32px;'>{birthday_message}</h2>", 
                     unsafe_allow_html=True
                 )
 
@@ -261,7 +261,9 @@ if page == "Anniversaires 🎂":
                 )
 
                 # Add a random joyful fact at the end with emojis
-                st.markdown("<div style='font-size: 20px; font-style: italic; text-align: center; color: #FF6347;'>Pssst, t'es au courant de la super nouvelle du mois ? 🎉 Julien et Elias ont été validés ! 🚀✨</div>", unsafe_allow_html=True)
+                # Add a couple of line breaks before the last text
+                st.markdown("<br><br><div style='font-size: 20px; font-style: italic; text-align: center; color: #FF6347;'>Pssst, t'es au courant de la super nouvelle du mois ? 🎉 Julien et Elias ont été validés ! 🚀✨</div>", unsafe_allow_html=True)
+
 
 
 
