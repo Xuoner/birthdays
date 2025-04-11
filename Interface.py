@@ -196,10 +196,18 @@ if page == "Anniversaires 🎂":
                 
                 # Format the date in French
                 next_birthday_date = format_date_in_french(next_birthday['Next Birthday'].strftime('%A %d %B'))
-                
+                same_birthday_people = data[data['Next Birthday'] == next_birthday['Next Birthday']]
+                num_people = len(same_birthday_people)
                 # Display the joyful birthday information
                 st.markdown(f"<div class='birthday-box'>", unsafe_allow_html=True)
                 # Display a bigger line for the birthday message with neutral text color
+                # Singular or plural depending on the number of people
+                if num_people == 1:
+                    birthday_message += f"{same_birthday_people['PRENOM'].iloc[0]} fêtera son anniversaire le {next_birthday_date}."
+                else:
+                    # Handle plural case
+                    birthday_message += " et ".join([person['PRENOM'] for index, person in same_birthday_people.iterrows()])
+                    birthday_message += f" fêteront leur anniversaire le {next_birthday_date}. Oui oui, deux anniversaires en un jour, on en a de la chance !"
                 st.markdown(
                     f"<h2 style='font-size: 36px;'>🎉 {next_birthday['PRENOM']} aura {next_birthday['Age']} ans le {next_birthday_date}.</h2>", 
                     unsafe_allow_html=True
@@ -250,6 +258,10 @@ if page == "Anniversaires 🎂":
                     f"<div style='font-size: 18px; text-align: center;'>🎂 Mais {next_birthday_after_next['PRENOM']} arrive juste derrière (le {next_birthday_after_next_date}) ! 🎉</div>", 
                     unsafe_allow_html=True
                 )
+
+                # Add a random joyful fact at the end with emojis
+                st.markdown("<div style='font-size: 20px; font-style: italic; text-align: center; color: #FF6347;'>Pssst, t'es au courant de la super nouvelle du mois ? 🎉 Julien et Elias ont été validés ! 🚀✨</div>", unsafe_allow_html=True)
+
 
 
             except Exception as e:
