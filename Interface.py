@@ -262,7 +262,7 @@ if page == "Anniversaires 🎂":
 
                 # Add a random joyful fact at the end with emojis
                 # Add a couple of line breaks before the last text
-                st.markdown("<br><br><div style='font-size: 20px; font-style: italic; text-align: center; color: #FF6347;'>Pssst, t'es au courant de la super nouvelle du mois ? 🎉 Julien et Elias ont été validés ! 🚀✨</div>", unsafe_allow_html=True)
+                st.markdown("<br><br><div style='font-size: 20px; font-style: italic; text-align: center; color: #FF6347;'>Pssst… n’oublie pas que le 25 mai, c’est la fête des mères ! 💐❤️ C’est le moment parfait pour lui dire merci, je t’aime, ou juste lui offrir un câlin (et peut-être des fleurs 😄🌷).</div>", unsafe_allow_html=True)
 
 
 
