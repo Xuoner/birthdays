@@ -262,7 +262,8 @@ if page == "Anniversaires 🎂":
 
                 # Add a random joyful fact at the end with emojis
                 # Add a couple of line breaks before the last text
-                st.markdown("<br><br><div style='font-size: 20px; font-style: italic; text-align: center; color: #FF6347;'>Pssst… n’oublie pas que le 25 mai, c’est la fête des mères ! 💐❤️ C’est le moment parfait pour lui dire merci, je t’aime, ou juste lui offrir un câlin (et peut-être des fleurs 😄🌷).</div>", unsafe_allow_html=True)
+                st.markdown("<br><br><div style='font-size: 20px; font-style: italic; text-align: center; color: #4682B4;'>Le 15 juin, c’est la fête des pères ! 💙 Une belle occasion de lui montrer combien il compte : un petit mot, un moment partagé… ou simplement un 'merci Papa' qui vient du cœur. 👔✨</div>", unsafe_allow_html=True)
+
 
 
 
