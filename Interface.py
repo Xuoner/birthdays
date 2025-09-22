@@ -262,7 +262,14 @@ if page == "Anniversaires 🎂":
 
                 # Add a random joyful fact at the end with emojis
                 # Add a couple of line breaks before the last text
-                st.markdown("<br><br><div style='font-size: 20px; font-style: italic; text-align: center; color: #4682B4;'>Le 15 juin, c’est la fête des pères ! 💙 Une belle occasion de lui montrer combien il compte : un petit mot, un moment partagé… ou simplement un 'merci Papa' qui vient du cœur. 👔✨</div>", unsafe_allow_html=True)
+                st.markdown(
+    "<br><br><div style='font-size: 20px; font-style: italic; text-align: center; color: #4682B4;'>"
+    "En cette belle rentrée, nous accueillons 2 nouvelles personnes : <b>Sabina</b> et <b>Thibault</b>, bienvenue à vous ! 🎉<br>"
+    "Nous fêtons aussi avec joie le fait que <b>Tachafin</b> reste avec nous 🤗"
+    "</div>",
+    unsafe_allow_html=True
+)
+
 
 
 
@@ -526,3 +533,4 @@ if page == "Chatbot ACL 🤖":
 
         # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})
+
